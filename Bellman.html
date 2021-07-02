@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Лабораторная работа №5</title>
+		<script type="text/javascript">
+			var i, j;
+			function g(x, y){
+				//return Math.exp(x+y);
+				return Math.floor(Math.random() * Math.floor(100));
+			}
+			var m = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
+			var m1 = m;
+			var str = [[1,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,1]];
+		</script>
+	</head>
+	<body>
+		<h1>Лабораторная работа №5</h1>
+		
+		<table border="1" cellpadding="3">
+		<script type="text/javascript">
+			for (i = 0; i < 10; i++){
+				for(j = 0; j < 10; j++){
+					m[i][j] = g(i,j);
+					m1[i][j] = m[i][j];
+				}
+			}
+			for(i = 8; i >= 0; i--){
+
+				m1[i][9]=m[i][9]+m1[i+1][9];
+			}
+			for(j = 8; j >= 0; j--){
+				m1[9][j]=m[9][j]+m1[9][j+1];
+			}
+			for (i=8; i >= 0; i--){
+				for( j =8; j>=0; j--){
+                    m1[i][j] = m[i][j] + Math.min(m1[i + 1][j],m1[i][j+1]);
+				}
+			}
+			i = 0; j = 0;
+			while(i<9 && j<9){
+				if (m1[i][j+1]<=m1[i+1][j]) {str[i][j+1]=1; j++;}
+				else {str[i+1][j]=1; i++;}
+			}
+			if(j==9 || i!=8){
+				while (j<9)
+				{str[i][j+1]=1; j++;}
+			}
+			if(i==9 || j!=8){
+				while (i<9)
+				{str[i+1][j]=1; i++;}
+			}
+			for ( i=9; i>=0; i--){
+				document.write("<tr><td>"+i);
+				for(var j=0; j<10; j++){
+					if(str[i][j]==1) document.write("<td bgcolor=\"781f19\"><font color=\"ffffff\">"+m[i][j].toFixed(3));
+					else document.write("<td>"+m[i][j].toFixed(3));
+				}
+			}
+			
+			document.write("<tr><td><td>0<td>1<td>2<td>3<td>4<td>5<td>6<td>7<td>8<td>9</table>");
+		</script>	
+	</body>
+</html>
