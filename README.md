@@ -2,4 +2,4 @@
 выбирать управление на этом шаге так, чтобы выигрыш на
 данном шаге плюс оптимальный выигрыш на всех последующих шагах был бы максимальным.  
 ![](https://github.com/Kolyskova/Finding-the-optimal-path-Bellman-equation-/blob/main/B1.png) ![](https://github.com/Kolyskova/Finding-the-optimal-path-Bellman-equation-/blob/main/B2.png)  
-Оптимальный путь выделен цветом.
+Оптимальный путь из правого нижнего угла в левый верхний выделен цветом.
